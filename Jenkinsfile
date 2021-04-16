@@ -24,13 +24,13 @@ pipeline {
                 script {
                     checkout scm
                     docker.withRegistry('', 'dockerID') {
-                    def customImage = docker.build("lawrenceodedina/new:${env.BUILD_ID}")
-                    def customImage1 = docker.build("lawrenceodedina/new")
+                    def customImage = docker.build("femiodedina/new:${env.BUILD_ID}")
+                    def customImage1 = docker.build("femiodedina/new")
                     customImage.push()
                     customImage1.push()
                     }
                 }
               }
-        }  
+            }  
         }
     }
