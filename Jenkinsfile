@@ -1,10 +1,10 @@
 pipeline {
     agent any
-    tools {
+    tools{
         maven 'M2_HOME'
     }
      triggers {
-        pollSCM('* * * * *')
+        pollSCM'* * * * *'
     }
     stages {
         stage('Build') {
