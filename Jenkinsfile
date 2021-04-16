@@ -22,11 +22,11 @@ pipeline {
         stage('Deploy') {
             steps {
                 script {
-                    docker.withRegistry('', 'dockerID') {
-                    def customImage = docker.build("femiodedina/new:${env.BUILD_ID}")
-                    def customImage1 = docker.build("femiodedina/new")
-                    customImage.push()
-                    customImage1.push()
+                    checkout scm
+                    app=docker.build("femiodedina/new")
+                    docker.withRegistry('', dockerID){
+                        app.push("$env.BUILD_ID")
+                        app.push("latest")
                     }
                 }
               }
