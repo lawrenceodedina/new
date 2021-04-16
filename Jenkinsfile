@@ -24,11 +24,11 @@ pipeline {
                 script {
                     checkout scm
                     app=docker.build("femiodedina/new")
-                    docker.withRegistry('', dockerID)
-                    app.push("$env.BUILD_NUMBER")
-                    app.push("latest")
+                    docker.withRegistry('', dockerID){
+                        app.push("$env.BUILD_NUMBER")
+                        app.push("latest")
+                    }
                 }
               }
-            }
+        }
     }
-}  
