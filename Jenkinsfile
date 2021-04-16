@@ -24,9 +24,10 @@ pipeline {
                 script {
                     checkout scm
                     def app=docker.build("femiodedina/new:$env.BUILD_ID")
+                    def app1=docker.build("femiodedina/new")
                     docker.withRegistry('', dockerID){
                         app.push()
-                        app.push("latest")
+                        app1.push("latest")
                     }
                 }
               }
