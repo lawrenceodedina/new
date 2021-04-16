@@ -23,9 +23,9 @@ pipeline {
             steps {
                 script {
                     checkout scm
-                    app=docker.build("femiodedina/new")
+                    app=docker.build("femiodedina/new:$env.BUILD_ID")
                     docker.withRegistry('', dockerID){
-                        app.push("$env.BUILD_ID")
+                        app.push()
                         app.push("latest")
                     }
                 }
